@@ -1,4 +1,4 @@
-# CI/CD Final Project - CI-CD-Python
+Project Name= CI/CD Final Project
 
 **Written by Brian McCarthy**
 
