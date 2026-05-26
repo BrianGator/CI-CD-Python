@@ -1,0 +1,6 @@
+{
+  "name": "CI/CD Final Project - Brian McCarthy",
+  "description": "An interactive workspace and dashboard for Brian McCarthy's CI/CD Final Project, demonstrating GitHub Actions pipelines, Tekton tasks, and OpenShift CD configurations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
