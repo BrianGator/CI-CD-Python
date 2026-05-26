@@ -27,7 +27,7 @@ The mission of this project is to automate the linting, unit testing, image buil
 The project has the following modular file structure:
 
 ```text
-CI-CD-Python/
+cicd-final-project/
 │
 ├── .github/
 │   └── workflows/
@@ -57,7 +57,7 @@ CI-CD-Python/
 This project fulfills the following 10-point scoring requirements (Total: 20 points, requires 14 points / 70% to pass):
 
 ### 1. Project Name & Readme Details (2 points)
-- Repositories are cleanly structured and named `CI-CD-Python`.
+- Repositories are cleanly structured and named `cicd-final-project`.
 - The `README.md` details of the project are explicitly outlined here.
 
 ### 2. GitHub Actions CI Workflow (`workflow.yml`) (4 points)
@@ -98,8 +98,8 @@ This project fulfills the following 10-point scoring requirements (Total: 20 poi
    ```
 2. Clone the repository and change directory:
    ```bash
-   git clone https://github.com/BrianGator/CI-CD-Python.git
-   cd CI-CD-Python
+   git clone https://github.com/BrianGator/cicd-final-project.git
+   cd cicd-final-project
    ```
 3. Set up the development virtual environment and install dependencies:
    ```bash

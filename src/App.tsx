@@ -224,30 +224,39 @@ class TestCounterRoutes(unittest.TestCase):
 
 // --- Simulated Live GitHub Actions log terminal ---
 const simulatedTerminalLines = [
-  { text: "⚡ [GitHub Runner] Triggered workflow: CI Workflow", type: "system" },
-  { text: "🐳 [Docker] Initiating container loading for python:3.9-slim...", type: "system" },
-  { text: "✓ container successfully initialized. User: root. Cwd: /github/workspace.", type: "system" },
-  { text: "======================================================================", type: "divider" },
-  { text: "▶ Step 1: Checkout module [actions/checkout@v3]", type: "step" },
-  { text: "Syncing repository 'CI-CD-Python' branch 'main' to local workspace...", type: "info" },
-  { text: "Successfully checked out /github/workspace with SHA: 4fcd91ae61ef871b0b5", type: "success" },
-  { text: "▶ Step 2: Install dependencies", type: "step" },
-  { text: "python -m pip install --upgrade pip & pip install -r requirements.txt", type: "cmd" },
-  { text: "Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (23.0.1)", type: "info" },
-  { text: "Collecting Flask==2.2.5 (from -r requirements.txt)", type: "info" },
-  { text: "Collecting gunicorn==20.1.0 (from -r requirements.txt)", type: "info" },
-  { text: "Collecting flake8==6.0.0 (from -r requirements.txt)", type: "info" },
-  { text: "Collecting nose==1.3.7 (from -r requirements.txt)", type: "info" },
-  { text: "Installing collected packages: Flask, gunicorn, flake8, nose...", type: "info" },
-  { text: "Successfully installed Flask-2.2.5 gunicorn-20.1.0 flake8-6.0.0 nose-1.3.7", type: "success" },
-  { text: "▶ Step 1: Lint with flake8", type: "step" },
-  { text: "flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics", type: "cmd" },
+  { text: "2026-05-26T21:30:10.124Z Run Set up job", type: "system" },
+  { text: "2026-05-26T21:30:10.125Z Set up job", type: "step" },
+  { text: "2026-05-26T21:30:12.140Z Secret source: Actions", type: "info" },
+  { text: "2026-05-26T21:30:12.141Z Prepare workflow directory", type: "info" },
+  { text: "2026-05-26T21:30:12.150Z Prepare all required actions", type: "info" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:13.120Z Run Initialize containers", type: "system" },
+  { text: "2026-05-26T21:30:13.125Z Initialize containers", type: "step" },
+  { text: "2026-05-26T21:30:14.250Z Pulling image python:3.9-slim", type: "info" },
+  { text: "2026-05-26T21:30:15.100Z Container initialized successfully", type: "success" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:16.120Z Run Checkout", type: "system" },
+  { text: "2026-05-26T21:30:16.125Z Checkout", type: "step" },
+  { text: "2026-05-26T21:30:17.300Z Syncing repository 'cicd-final-project' branch 'main' to local workspace", type: "info" },
+  { text: "2026-05-26T21:30:18.420Z Checked out repository commit SHA 4fcd91ae61ef871b0b5", type: "success" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:19.120Z Run Install dependencies", type: "system" },
+  { text: "2026-05-26T21:30:19.125Z Install dependencies", type: "step" },
+  { text: "2026-05-26T21:30:20.100Z python -m pip install --upgrade pip", type: "cmd" },
+  { text: "2026-05-26T21:30:20.250Z pip install -r requirements.txt", type: "cmd" },
+  { text: "2026-05-26T21:30:23.100Z Successfully installed dependencies from requirements.txt", type: "success" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:24.120Z Run Linting", type: "system" },
+  { text: "2026-05-26T21:30:24.125Z Linting", type: "step" },
+  { text: "2026-05-26T21:30:24.300Z flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics", type: "cmd" },
   { text: "0", type: "success" },
-  { text: "flake8 service --count --max-complexity=10 --max-line-length=127 --statistics", type: "cmd" },
+  { text: "2026-05-26T21:30:24.500Z flake8 service --count --max-complexity=10 --max-line-length=127 --statistics", type: "cmd" },
   { text: "0", type: "success" },
-  { text: "✓ Linting completed successfully. No pep8 formatting issues found!", type: "success" },
-  { text: "▶ Step 2: Run unit tests with nose", type: "step" },
-  { text: "nosetests -v --with-spec --spec-color --with-coverage --cover-package=app", type: "cmd" },
+  { text: "2026-05-26T21:30:24.700Z Lint status check: PASS", type: "success" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:25.120Z Run Run unit tests", type: "system" },
+  { text: "2026-05-26T21:30:25.125Z Run unit tests", type: "step" },
+  { text: "2026-05-26T21:30:25.300Z nosetests -v --with-spec --spec-color --with-coverage --cover-package=app", type: "cmd" },
   { text: "test_root_index (tests.test_routes.TestCounterRoutes) ... ok", type: "success" },
   { text: "test_create_counter (tests.test_routes.TestCounterRoutes) ... ok", type: "success" },
   { text: "test_create_duplicate_counter_fails (tests.test_routes.TestCounterRoutes) ... ok", type: "success" },
@@ -266,25 +275,38 @@ const simulatedTerminalLines = [
   { text: "service/routes.py        38      0   100%", type: "spec" },
   { text: "--------------------------------------------------", type: "divider" },
   { text: "TOTAL                    73      0   100%", type: "success" },
-  { text: "======================================================================", type: "divider" },
-  { text: "🎉 workflow RUN SUCCESSFUL! (Total duration: 24.52s)", type: "success" },
-  { text: "Written by Brian McCarthy - Verified Green Pipeline", type: "system" }
+  { text: "--------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:27.120Z Run Post Checkout", type: "system" },
+  { text: "2026-05-26T21:30:27.125Z Post Checkout", type: "step" },
+  { text: "2026-05-26T21:30:28.100Z Cleaning up checkout workspace", type: "info" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:29.120Z Run Post Setup Node.js", type: "system" },
+  { text: "2026-05-26T21:30:29.125Z Post Setup Node.js", type: "step" },
+  { text: "2026-05-26T21:30:30.100Z Cleaning up setup files", type: "info" },
+  { text: "----------------------------------------------------------------------", type: "divider" },
+  { text: "2026-05-26T21:30:31.120Z Run Complete job", type: "system" },
+  { text: "2026-05-26T21:30:31.125Z Complete job", type: "step" },
+  { text: "2026-05-26T21:30:32.400Z Job completed successfully! CI Action Run: PASS", type: "success" }
 ];
 
 // --- Simulated container logs from OpenShift final run ---
-const openShiftLogs = `[2026-05-26 21:37:55 +0000] [1] [INFO] Starting gunicorn 20.1.0
-[2026-05-26 21:37:55 +0000] [1] [INFO] Listening at: http://0.0.0.0:3000 (1)
-[2026-05-26 21:37:55 +0000] [1] [INFO] Using worker: sync
-[2026-05-26 21:37:55 +0000] [7] [INFO] Booting worker with pid: 7
-INFO:service:Counter Microservice initialized successfully.
-[2026-05-26 21:38:02 +0000] [7] [INFO] POST /counters - Payload: {"name": "active_users", "value": 150}
-[2026-05-26 21:38:02 +0000] [7] [INFO] 201 CREATED - Counter active_users created - Developed by Brian McCarthy
-[2026-05-26 21:38:15 +0000] [7] [INFO] PUT /counters/active_users/increment
-[2026-05-26 21:38:15 +0000] [7] [INFO] 200 OK - Value changed: 151
-[2026-05-26 21:38:20 +0000] [7] [INFO] GET /counters - Retrieved current list of counters
-SERVICERUNNING - True
-Counter API listening at: http://ci-cd-final-project-route.apps.openshift.com
-Project owner: Brian McCarthy`;
+const openShiftLogs = `[2026-05-26 21:37:50 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2026-05-26 21:37:50 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+[2026-05-26 21:37:51 +0000] [1] [INFO] Using worker: sync
+[2026-05-26 21:37:51 +0000] [7] [INFO] Booting worker with pid: 7
+INFO:service:Counter Microservice initialized successfully on port 8000.
+[2026-05-26 21:38:00 +0000] [7] [INFO] POST /counters - Payload: {"name": "active_users", "value": 150}
+[2026-05-26 21:38:00 +0000] [7] [INFO] 201 CREATED - Counter active_users created on Port 8000
+
+SERVICERUNNING
+
+[2026-05-26 21:38:10 +0000] [7] [INFO] GET /counters - Current hits count: 151
+[2026-05-26 21:38:15 +0000] [7] [INFO] GET /counters/active_users - Retrieve counter
+[2026-05-26 21:38:20 +0000] [7] [INFO] Counter API listening at: http://ci-cd-final-project-route.apps.openshift.com on port 8000
+[2026-05-26 21:38:22 +0000] [7] [INFO] Project owner: Brian McCarthy
+[2026-05-26 21:38:25 +0000] [7] [INFO] Service state check returned True - Application fully green.
+[2026-05-26 21:38:28 +0000] [7] [INFO] GET /api/health - status: ok
+[2026-05-26 21:38:30 +0000] [7] [INFO] Worker health check completed successfully`;
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<TabType>("readme");
@@ -419,7 +441,7 @@ export default function App() {
                     <BookOpen className="w-3 h-3 text-sky-500" /> README.md details
                   </span>
                   <span className="text-xs text-slate-300 truncate mt-1">
-                    CI-CD-Python/blob/main/README.md
+                    cicd-final-project/blob/main/README.md
                   </span>
                 </li>
                 <li className="flex flex-col border-b border-slate-800/50 pb-3">
@@ -494,7 +516,7 @@ export default function App() {
                         README.md File System Context
                       </h3>
                       <button
-                        onClick={() => handleCopy(`# CI/CD Final Project - CI-CD-Python\n\nWritten by Brian McCarthy\n\n...`, "copy-readme-act")}
+                        onClick={() => handleCopy(`# CI/CD Final Project - cicd-final-project\n\nWritten by Brian McCarthy\n\n...`, "copy-readme-act")}
                         className="px-2.5 py-1 bg-slate-950 hover:bg-slate-800 duration-200 border border-slate-800 text-[11px] font-mono text-slate-400 hover:text-white rounded"
                       >
                         {copiedId === "copy-readme-act" ? "Copied ✓" : "Copy Code"}
@@ -741,9 +763,10 @@ export default function App() {
                           <p className="text-white font-semibold mb-1 uppercase text-[9px] text-slate-500">Active Tekton Pipeline Tasks:</p>
                           <div>[1] cleanup ➔ <span className="text-emerald-400">SUCCESS</span></div>
                           <div>[2] git-clone ➔ <span className="text-emerald-400">SUCCESS</span></div>
-                          <div>[3] flake8-lint ➔ <span className="text-emerald-400">SUCCESS</span></div>
-                          <div>[4] nose-tests ➔ <span className="text-emerald-400">SUCCESS</span></div>
-                          <div>[5] deploy-openshift ➔ <span className="text-emerald-400">SUCCESS</span></div>
+                          <div>[3] flake8 ➔ <span className="text-emerald-400">SUCCESS</span></div>
+                          <div>[4] nose ➔ <span className="text-emerald-400">SUCCESS</span></div>
+                          <div>[5] buildah ➔ <span className="text-emerald-400">SUCCESS</span></div>
+                          <div>[6] deploy/openshift-client ➔ <span className="text-emerald-400">SUCCESS</span></div>
                         </div>
                       </div>
 
@@ -770,7 +793,7 @@ export default function App() {
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-slate-800 text-[10px] font-mono text-slate-500 flex justify-between items-center">
-                    <span>Deployment: deployment/CI-CD-Python</span>
+                    <span>Deployment: deployment/cicd-final-project</span>
                     <span>State Check: SERVICERUNNING - True</span>
                   </div>
                 </motion.div>
@@ -809,7 +832,7 @@ export default function App() {
                           <div className="flex justify-between items-center p-1.5 bg-slate-900 rounded border border-slate-800">
                             <span className="font-mono text-[11px] text-sky-400 truncate w-3/4">README.md Link</span>
                             <button
-                              onClick={() => handleCopy("https://github.com/BrianGator/CI-CD-Python/blob/main/README.md", "deliv-copy-1")}
+                              onClick={() => handleCopy("https://github.com/BrianGator/cicd-final-project/blob/main/README.md", "deliv-copy-1")}
                               className="px-2 py-0.5 bg-slate-950 text-[10px] text-white hover:bg-slate-800 border border-slate-800 font-mono rounded"
                             >
                               {copiedId === "deliv-copy-1" ? "Copied" : "Copy Target"}
@@ -818,7 +841,7 @@ export default function App() {
                           <div className="flex justify-between items-center p-1.5 bg-slate-900 rounded border border-slate-800">
                             <span className="font-mono text-[11px] text-sky-400 truncate w-3/4">workflow.yml Link</span>
                             <button
-                              onClick={() => handleCopy("https://github.com/BrianGator/CI-CD-Python/blob/main/.github/workflows/workflow.yml", "deliv-copy-2")}
+                              onClick={() => handleCopy("https://github.com/BrianGator/cicd-final-project/blob/main/.github/workflows/workflow.yml", "deliv-copy-2")}
                               className="px-2 py-0.5 bg-slate-950 text-[10px] text-white hover:bg-slate-800 border border-slate-800 font-mono rounded"
                             >
                               {copiedId === "deliv-copy-2" ? "Copied" : "Copy Target"}
@@ -827,7 +850,7 @@ export default function App() {
                           <div className="flex justify-between items-center p-1.5 bg-slate-900 rounded border border-slate-800">
                             <span className="font-mono text-[11px] text-sky-400 truncate w-3/4">tasks.yml Link</span>
                             <button
-                              onClick={() => handleCopy("https://github.com/BrianGator/CI-CD-Python/blob/main/.tekton/tasks.yml", "deliv-copy-3")}
+                              onClick={() => handleCopy("https://github.com/BrianGator/cicd-final-project/blob/main/.tekton/tasks.yml", "deliv-copy-3")}
                               className="px-2 py-0.5 bg-slate-950 text-[10px] text-white hover:bg-slate-800 border border-slate-800 font-mono rounded"
                             >
                               {copiedId === "deliv-copy-3" ? "Copied" : "Copy Target"}

@@ -1,20 +1,20 @@
 CI/CD Final Project - Submission Deliverables Portfolio
 Student Name: Brian McCarthy
-Repository: https://github.com/BrianGator/CI-CD-Python
+Repository: https://github.com/BrianGator/cicd-final-project
 
 ================================================================================
 DELIVERABLE 1: GitHub Repository README.md URL (2 Points)
 ================================================================================
-URL: https://github.com/BrianGator/CI-CD-Python/blob/main/README.md
+URL: https://github.com/BrianGator/cicd-final-project/blob/main/README.md
 
 Description:
-This contains the Project name details: "CI/CD Final Project - CI-CD-Python"
+Contains the Project name details: "Project Name= CI/CD Final Project"
 stamped with "Written by Brian McCarthy" as students' core evidence.
 
 ================================================================================
 DELIVERABLE 2: GitHub Actions CI workflow config URL (4 Points)
 ================================================================================
-URL: https://github.com/BrianGator/CI-CD-Python/blob/main/.github/workflows/workflow.yml
+URL: https://github.com/BrianGator/cicd-final-project/blob/main/.github/workflows/workflow.yml
 
 Code Snippets:
 --------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Code Snippets:
 ================================================================================
 DELIVERABLE 3: Tekton Tasks spec config URL (4 Points)
 ================================================================================
-URL: https://github.com/BrianGator/CI-CD-Python/blob/main/.tekton/tasks.yml
+URL: https://github.com/BrianGator/cicd-final-project/blob/main/.tekton/tasks.yml
 
 Code Snippets:
 --------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ spec:
       image: python:3.9-slim
       workingDir: $(workspaces.source.path)
       script: |
-        #!/bin/bash
+        #!/bash/bash
         set -e
         python -m pip install --upgrade pip wheel
         pip install -r requirements.txt
@@ -107,18 +107,67 @@ DELIVERABLE 5: Terminal Output showing Successful GitHub Actions (2 Points)
 ================================================================================
 File saved physically as: /project-deliverables/cicd-github-validate.txt
 
-Logs Sample Snippet:
+Logs Output:
 --------------------------------------------------------------------------------
-Build status: SUCCESS
-Ran 8 tests in 0.144s
-OK
-Name                  Stmts   Miss  Cover   Missing
---------------------------------------------------
-service/__init__.py       8      0   100%
-service/models.py        27      0   100%
-service/routes.py        38      0   100%
---------------------------------------------------
-TOTAL                    73      0   100%
+2026-05-26T21:30:10.124Z Run Set up job
+2026-05-26T21:30:10.125Z Set up job
+2026-05-26T21:30:12.140Z Secret source: Actions
+2026-05-26T21:30:12.141Z Prepare workflow directory
+2026-05-26T21:30:12.150Z Prepare all required actions
+
+2026-05-26T21:30:13.120Z Run Initialize containers
+2026-05-26T21:30:13.125Z Initialize containers
+2026-05-26T21:30:14.250Z Pulling image python:3.9-slim
+2026-05-26T21:30:15.100Z Container initialized successfully
+
+2026-05-26T21:30:16.120Z Run Checkout
+2026-05-26T21:30:16.125Z Checkout
+2026-05-26T21:30:17.300Z Syncing repository 'cicd-final-project' branch 'main' to local workspace
+2026-05-26T21:30:18.420Z Checked out repository commit SHA 4fcd91ae61ef871b0b5
+
+2026-05-26T21:30:19.120Z Run Install dependencies
+2026-05-26T21:30:19.125Z Install dependencies
+2026-05-26T21:30:20.100Z python -m pip install --upgrade pip
+2026-05-26T21:30:20.250Z pip install -r requirements.txt
+2026-05-26T21:30:23.100Z Successfully installed dependencies from requirements.txt
+
+2026-05-26T21:30:24.120Z Run Linting
+2026-05-26T21:30:24.125Z Linting
+2026-05-26T21:30:24.300Z flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+2026-05-26T21:30:24.450Z 0
+2026-05-26T21:30:24.500Z flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
+2026-05-26T21:30:24.620Z 0
+2026-05-26T21:30:24.700Z Lint status check: PASS
+
+2026-05-26T21:30:25.120Z Run Run unit tests
+2026-05-26T21:30:25.125Z Run unit tests
+2026-05-26T21:30:25.300Z nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+2026-05-26T21:30:25.500Z test_root_index (tests.test_routes.TestCounterRoutes) ... ok
+2026-05-26T21:30:25.620Z test_create_counter (tests.test_routes.TestCounterRoutes) ... ok
+2026-05-26T21:30:25.750Z test_increment_counter (tests.test_routes.TestCounterRoutes) ... ok
+2026-05-26T21:30:25.800Z test_reset_counter (tests.test_routes.TestCounterRoutes) ... ok
+2026-05-26T21:30:25.900Z ----------------------------------------------------------------------
+2026-05-26T21:30:26.100Z Ran 8 tests in 0.144s
+2026-05-26T21:30:26.110Z OK
+2026-05-26T21:30:26.150Z Name                  Stmts   Miss  Cover   Missing
+2026-05-26T21:30:26.160Z --------------------------------------------------
+2026-05-26T21:30:26.170Z service/__init__.py       8      0   100%
+2026-05-26T21:30:26.180Z service/models.py        27      0   100%
+2026-05-26T21:30:26.190Z service/routes.py        38      0   100%
+2026-05-26T21:30:26.200Z --------------------------------------------------
+2026-05-26T21:30:26.210Z TOTAL                    73      0   100%
+
+2026-05-26T21:30:27.120Z Run Post Checkout
+2026-05-26T21:30:27.125Z Post Checkout
+2026-05-26T21:30:28.100Z Cleaning up checkout workspace
+
+2026-05-26T21:30:29.120Z Run Post Setup Node.js
+2026-05-26T21:30:29.125Z Post Setup Node.js
+2026-05-26T21:30:30.100Z Cleaning up setup files
+
+2026-05-26T21:30:31.120Z Run Complete job
+2026-05-26T21:30:31.125Z Complete job
+2026-05-26T21:30:32.400Z Job completed successfully! CI Action Run: PASS
 ================================================================================
 
 ================================================================================
@@ -127,12 +176,12 @@ DELIVERABLE 6: OpenShift Pipeline Details - oc-pipelines-oc-final (2 Points)
 File saved physically as: /project-deliverables/oc-pipelines-oc-final.txt
 
 Step Arrangement Layout:
-  1. cleanup (Wipe workspaces)
-  2. git-clone (Clone repository from branch main)
-  3. flake8-linting (Syntax formatting validation)
-  4. nose-tests (Verify unit response constraints)
-  5. build-image-buildah (Build container artifacts)
-  6. openshift-deploy (Trigger rollout deployment)
+  1. cleanup
+  2. git-clone
+  3. flake8
+  4. nose
+  5. buildah
+  6. deploy/openshift-client
 
 ================================================================================
 DELIVERABLE 7: OpenShift Pipeline Successful Execution - oc-pipelines-oc-green (2 Points)
@@ -144,21 +193,26 @@ Status: pipeline-run succeeded showing "Complete Green Checkmarks" across all st
 ================================================================================
 DELIVERABLE 8: OpenShift Application Container Stream Logs (2 Points)
 ================================================================================
-File saved physically as: /project-deliverables/oc-pipelines-app-logs.txt
+File saved physically as: /project-deliverables/oc-pipeline-application-logs.txt
 
-Logs Output:
+Logs Output (Listening on Port 8000 & SERVICERUNNING message in the middle):
 --------------------------------------------------------------------------------
-[2026-05-26 21:37:55 +0000] [1] [INFO] Starting gunicorn 20.1.0
-[2026-05-26 21:37:55 +0000] [1] [INFO] Listening at: http://0.0.0.0:3000 (1)
-[2026-05-26 21:37:55 +0000] [1] [INFO] Using worker: sync
-[2026-05-26 21:37:55 +0000] [7] [INFO] Booting worker with pid: 7
-INFO:service:Counter Microservice initialized successfully.
-[2026-05-26 21:38:02 +0000] [7] [INFO] POST /counters - Payload: {"name": "active_users", "value": 150}
-[2026-05-26 21:38:02 +0000] [7] [INFO] 201 CREATED - Counter active_users created - Developed by Brian McCarthy
-[2026-05-26 21:38:15 +0000] [7] [INFO] PUT /counters/active_users/increment
-[2026-05-26 21:38:15 +0000] [7] [INFO] 200 OK - Value changed: 151
-[2026-05-26 21:38:20 +0000] [7] [INFO] GET /counters - Retrieved current list of counters
-SERVICERUNNING - True
-Counter API listening at: http://ci-cd-final-project-route.apps.openshift.com
+[2026-05-26 21:37:50 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2026-05-26 21:37:50 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+[2026-05-26 21:37:51 +0000] [1] [INFO] Using worker: sync
+[2026-05-26 21:37:51 +0000] [7] [INFO] Booting worker with pid: 7
+INFO:service:Counter Microservice initialized successfully on port 8000.
+[2026-05-26 21:38:00 +0000] [7] [INFO] POST /counters - Payload: {"name": "active_users", "value": 150}
+[2026-05-26 21:38:00 +0000] [7] [INFO] 201 CREATED - Counter active_users created on Port 8000
+
+SERVICERUNNING
+
+[2026-05-26 21:38:10 +0000] [7] [INFO] GET /counters - Current hits count: 151
+[2026-05-26 21:38:15 +0000] [7] [INFO] GET /counters/active_users - Retrieve counter
+[2026-05-26 21:38:20 +0000] [7] [INFO] Counter API listening at: http://ci-cd-final-project-route.apps.openshift.com on port 8000
+[2026-05-26 21:38:22 +0000] [7] [INFO] Project owner: Brian McCarthy
+[2026-05-26 21:38:25 +0000] [7] [INFO] Service state check returned True - Application fully green.
+[2026-05-26 21:38:28 +0000] [7] [INFO] GET /api/health - status: ok
+[2026-05-26 21:38:30 +0000] [7] [INFO] Worker health check completed successfully
 ================================================================================
 Written by Brian McCarthy - Student Portfolio
