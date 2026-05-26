@@ -229,7 +229,7 @@ const simulatedTerminalLines = [
   { text: "✓ container successfully initialized. User: root. Cwd: /github/workspace.", type: "system" },
   { text: "======================================================================", type: "divider" },
   { text: "▶ Step 1: Checkout module [actions/checkout@v3]", type: "step" },
-  { text: "Syncing repository 'ci-cd-final-project' branch 'main' to local workspace...", type: "info" },
+  { text: "Syncing repository 'CI-CD-Python' branch 'main' to local workspace...", type: "info" },
   { text: "Successfully checked out /github/workspace with SHA: 4fcd91ae61ef871b0b5", type: "success" },
   { text: "▶ Step 2: Install dependencies", type: "step" },
   { text: "python -m pip install --upgrade pip & pip install -r requirements.txt", type: "cmd" },
@@ -419,7 +419,7 @@ export default function App() {
                     <BookOpen className="w-3 h-3 text-sky-500" /> README.md details
                   </span>
                   <span className="text-xs text-slate-300 truncate mt-1">
-                    ci-cd-final-project/blob/main/README.md
+                    CI-CD-Python/blob/main/README.md
                   </span>
                 </li>
                 <li className="flex flex-col border-b border-slate-800/50 pb-3">
@@ -494,7 +494,7 @@ export default function App() {
                         README.md File System Context
                       </h3>
                       <button
-                        onClick={() => handleCopy(`# CI/CD Final Project - ci-cd-final-project\n\nWritten by Brian McCarthy\n\n...`, "copy-readme-act")}
+                        onClick={() => handleCopy(`# CI/CD Final Project - CI-CD-Python\n\nWritten by Brian McCarthy\n\n...`, "copy-readme-act")}
                         className="px-2.5 py-1 bg-slate-950 hover:bg-slate-800 duration-200 border border-slate-800 text-[11px] font-mono text-slate-400 hover:text-white rounded"
                       >
                         {copiedId === "copy-readme-act" ? "Copied ✓" : "Copy Code"}
@@ -770,7 +770,7 @@ export default function App() {
                   </div>
 
                   <div className="mt-4 pt-3 border-t border-slate-800 text-[10px] font-mono text-slate-500 flex justify-between items-center">
-                    <span>Deployment: deployment/ci-cd-final-project</span>
+                    <span>Deployment: deployment/CI-CD-Python</span>
                     <span>State Check: SERVICERUNNING - True</span>
                   </div>
                 </motion.div>
@@ -809,7 +809,7 @@ export default function App() {
                           <div className="flex justify-between items-center p-1.5 bg-slate-900 rounded border border-slate-800">
                             <span className="font-mono text-[11px] text-sky-400 truncate w-3/4">README.md Link</span>
                             <button
-                              onClick={() => handleCopy("https://github.com/BrianSMc/ci-cd-final-project/blob/main/README.md", "deliv-copy-1")}
+                              onClick={() => handleCopy("https://github.com/BrianGator/CI-CD-Python/blob/main/README.md", "deliv-copy-1")}
                               className="px-2 py-0.5 bg-slate-950 text-[10px] text-white hover:bg-slate-800 border border-slate-800 font-mono rounded"
                             >
                               {copiedId === "deliv-copy-1" ? "Copied" : "Copy Target"}
@@ -818,7 +818,7 @@ export default function App() {
                           <div className="flex justify-between items-center p-1.5 bg-slate-900 rounded border border-slate-800">
                             <span className="font-mono text-[11px] text-sky-400 truncate w-3/4">workflow.yml Link</span>
                             <button
-                              onClick={() => handleCopy("https://github.com/BrianSMc/ci-cd-final-project/blob/main/.github/workflows/workflow.yml", "deliv-copy-2")}
+                              onClick={() => handleCopy("https://github.com/BrianGator/CI-CD-Python/blob/main/.github/workflows/workflow.yml", "deliv-copy-2")}
                               className="px-2 py-0.5 bg-slate-950 text-[10px] text-white hover:bg-slate-800 border border-slate-800 font-mono rounded"
                             >
                               {copiedId === "deliv-copy-2" ? "Copied" : "Copy Target"}
@@ -827,7 +827,7 @@ export default function App() {
                           <div className="flex justify-between items-center p-1.5 bg-slate-900 rounded border border-slate-800">
                             <span className="font-mono text-[11px] text-sky-400 truncate w-3/4">tasks.yml Link</span>
                             <button
-                              onClick={() => handleCopy("https://github.com/BrianSMc/ci-cd-final-project/blob/main/.tekton/tasks.yml", "deliv-copy-3")}
+                              onClick={() => handleCopy("https://github.com/BrianGator/CI-CD-Python/blob/main/.tekton/tasks.yml", "deliv-copy-3")}
                               className="px-2 py-0.5 bg-slate-950 text-[10px] text-white hover:bg-slate-800 border border-slate-800 font-mono rounded"
                             >
                               {copiedId === "deliv-copy-3" ? "Copied" : "Copy Target"}

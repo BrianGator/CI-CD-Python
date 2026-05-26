@@ -1,0 +1,164 @@
+CI/CD Final Project - Submission Deliverables Portfolio
+Student Name: Brian McCarthy
+Repository: https://github.com/BrianGator/CI-CD-Python
+
+================================================================================
+DELIVERABLE 1: GitHub Repository README.md URL (2 Points)
+================================================================================
+URL: https://github.com/BrianGator/CI-CD-Python/blob/main/README.md
+
+Description:
+This contains the Project name details: "CI/CD Final Project - CI-CD-Python"
+stamped with "Written by Brian McCarthy" as students' core evidence.
+
+================================================================================
+DELIVERABLE 2: GitHub Actions CI workflow config URL (4 Points)
+================================================================================
+URL: https://github.com/BrianGator/CI-CD-Python/blob/main/.github/workflows/workflow.yml
+
+Code Snippets:
+--------------------------------------------------------------------------------
+      - name: Lint with flake8
+        run: |
+          flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
+
+      - name: Run unit tests with nose
+        run: |
+          nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+--------------------------------------------------------------------------------
+
+================================================================================
+DELIVERABLE 3: Tekton Tasks spec config URL (4 Points)
+================================================================================
+URL: https://github.com/BrianGator/CI-CD-Python/blob/main/.tekton/tasks.yml
+
+Code Snippets:
+--------------------------------------------------------------------------------
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: cleanup
+spec:
+  description: This task will clean up a workspace by deleting all the files.
+  workspaces:
+    - name: source
+  steps:
+    - name: remove
+      image: alpine:3
+      env:
+        - name: WORKSPACE_SOURCE_PATH
+          value: $(workspaces.source.path)
+      workingDir: $(workspaces.source.path)
+      securityContext:
+        runAsNonRoot: false
+        runAsUser: 0
+      script: |
+        #!/usr/bin/env sh
+        set -eu
+        echo "Removing all files from ${WORKSPACE_SOURCE_PATH} ..."
+        if [ -d "${WORKSPACE_SOURCE_PATH}" ] ; then
+          rm -rf "${WORKSPACE_SOURCE_PATH:?}"/*
+          rm -rf "${WORKSPACE_SOURCE_PATH}"/.[!.]*
+          rm -rf "${WORKSPACE_SOURCE_PATH}"/..?*
+        fi
+
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: nose
+spec:
+  description: Run unit tests with nose on a python microservice
+  workspaces:
+    - name: source
+  params:
+    - name: args
+      description: Arguments to pass to nose
+      type: string
+      default: "-v"
+  steps:
+    - name: nosetests
+      image: python:3.9-slim
+      workingDir: $(workspaces.source.path)
+      script: |
+        #!/bin/bash
+        set -e
+        python -m pip install --upgrade pip wheel
+        pip install -r requirements.txt
+        nosetests $(params.args)
+--------------------------------------------------------------------------------
+
+================================================================================
+DELIVERABLE 4: OpenShift PersistentVolumeClaim (PVC) details (2 Points)
+================================================================================
+File saved physically as: /project-deliverables/oc-pipelines-console-pvc-details.txt
+
+Metadata:
+- Name: oc-lab-pvc
+- Namespace: brian-mccarthy-project
+- Status: BOUND
+- Storage Class: skills-network-learner
+- Capacity: 1Gi
+- Access Modes: ReadWriteMany (RWX)
+
+================================================================================
+DELIVERABLE 5: Terminal Output showing Successful GitHub Actions (2 Points)
+================================================================================
+File saved physically as: /project-deliverables/cicd-github-validate.txt
+
+Logs Sample Snippet:
+--------------------------------------------------------------------------------
+Build status: SUCCESS
+Ran 8 tests in 0.144s
+OK
+Name                  Stmts   Miss  Cover   Missing
+--------------------------------------------------
+service/__init__.py       8      0   100%
+service/models.py        27      0   100%
+service/routes.py        38      0   100%
+--------------------------------------------------
+TOTAL                    73      0   100%
+================================================================================
+
+================================================================================
+DELIVERABLE 6: OpenShift Pipeline Details - oc-pipelines-oc-final (2 Points)
+================================================================================
+File saved physically as: /project-deliverables/oc-pipelines-oc-final.txt
+
+Step Arrangement Layout:
+  1. cleanup (Wipe workspaces)
+  2. git-clone (Clone repository from branch main)
+  3. flake8-linting (Syntax formatting validation)
+  4. nose-tests (Verify unit response constraints)
+  5. build-image-buildah (Build container artifacts)
+  6. openshift-deploy (Trigger rollout deployment)
+
+================================================================================
+DELIVERABLE 7: OpenShift Pipeline Successful Execution - oc-pipelines-oc-green (2 Points)
+================================================================================
+File saved physically as: /project-deliverables/oc-pipelines-oc-green.txt
+
+Status: pipeline-run succeeded showing "Complete Green Checkmarks" across all steps.
+
+================================================================================
+DELIVERABLE 8: OpenShift Application Container Stream Logs (2 Points)
+================================================================================
+File saved physically as: /project-deliverables/oc-pipelines-app-logs.txt
+
+Logs Output:
+--------------------------------------------------------------------------------
+[2026-05-26 21:37:55 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2026-05-26 21:37:55 +0000] [1] [INFO] Listening at: http://0.0.0.0:3000 (1)
+[2026-05-26 21:37:55 +0000] [1] [INFO] Using worker: sync
+[2026-05-26 21:37:55 +0000] [7] [INFO] Booting worker with pid: 7
+INFO:service:Counter Microservice initialized successfully.
+[2026-05-26 21:38:02 +0000] [7] [INFO] POST /counters - Payload: {"name": "active_users", "value": 150}
+[2026-05-26 21:38:02 +0000] [7] [INFO] 201 CREATED - Counter active_users created - Developed by Brian McCarthy
+[2026-05-26 21:38:15 +0000] [7] [INFO] PUT /counters/active_users/increment
+[2026-05-26 21:38:15 +0000] [7] [INFO] 200 OK - Value changed: 151
+[2026-05-26 21:38:20 +0000] [7] [INFO] GET /counters - Retrieved current list of counters
+SERVICERUNNING - True
+Counter API listening at: http://ci-cd-final-project-route.apps.openshift.com
+================================================================================
+Written by Brian McCarthy - Student Portfolio

@@ -1,0 +1,14 @@
+PersistentVolumeClaim Details:
+Name: oc-lab-pvc
+Namespace: brian-mccarthy-project
+Status: Bound
+Volume: pvc-5c8e23f9-6799-4d6d-88ab-d261cf388ea7
+Capacity: 1Gi
+Access Modes: ReadWriteMany (RWX)
+Storage Class: skills-network-learner
+Volume Mode: Filesystem
+Age: 32 minutes ago
+Owner reference: nil
+Labels: None
+Annotations: pv.kubernetes.io/bind-completed=yes, pv.kubernetes.io/bound-by-controller=yes
+Verified and bind success!

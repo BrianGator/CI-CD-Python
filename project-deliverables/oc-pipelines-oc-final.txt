@@ -1,0 +1,11 @@
+OpenShift Tasks Layout (oc-pipelines-oc-final):
+- Name: oc-pipelines-oc-final
+- Project/Namespace: brian-mccarthy-project
+
+Pipeline steps:
+- cleanup: Wipe out workspace storage volumes to avoid state leakages and dirty caches.
+- git-clone: Retrieve codebase from branch main (https://github.com/BrianGator/CI-CD-Python)
+- flake8-lint: Code syntax and layout formatting verification.
+- nose-tests: Unit test suite execution and test coverage validation.
+- build-image: Compile final image using buildah inside containers.
+- openshift-deploy: Execute deployment rollouts.

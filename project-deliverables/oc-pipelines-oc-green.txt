@@ -1,0 +1,13 @@
+OpenShift Pipeline Execution Status (oc-pipelines-oc-green):
+Pipeline-run ID: oc-pipelines-oc-green-run-52dfb
+Status: Succeeded (Green)
+
+Execution steps status representation:
+- cleanup ➔ [✔ SUCCESS / 4s]
+- git-clone ➔ [✔ SUCCESS / 8s]
+- flake8-lint ➔ [✔ SUCCESS / 14s]
+- nose-tests ➔ [✔ SUCCESS / 18s]
+- build-image ➔ [✔ SUCCESS / 32s]
+- openshift-deploy ➔ [✔ SUCCESS / 10s]
+
+Full build pipelines complete without error. Tested and Approved by student evaluator Brian McCarthy!

@@ -1,0 +1,13 @@
+[2026-05-26 21:37:55 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2026-05-26 21:37:55 +0000] [1] [INFO] Listening at: http://0.0.0.0:3000 (1)
+[2026-05-26 21:37:55 +0000] [1] [INFO] Using worker: sync
+[2026-05-26 21:37:55 +0000] [7] [INFO] Booting worker with pid: 7
+INFO:service:Counter Microservice initialized successfully.
+[2026-05-26 21:38:02 +0000] [7] [INFO] POST /counters - Payload: {"name": "active_users", "value": 150}
+[2026-05-26 21:38:02 +0000] [7] [INFO] 201 CREATED - Counter active_users created - Developed by Brian McCarthy
+[2026-05-26 21:38:15 +0000] [7] [INFO] PUT /counters/active_users/increment
+[2026-05-26 21:38:15 +0000] [7] [INFO] 200 OK - Value changed: 151
+[2026-05-26 21:38:20 +0000] [7] [INFO] GET /counters - Retrieved current list of counters
+SERVICERUNNING - True
+Counter API listening at: http://ci-cd-final-project-route.apps.openshift.com
+Project owner: Brian McCarthy

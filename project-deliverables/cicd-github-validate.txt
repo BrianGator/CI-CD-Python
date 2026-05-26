@@ -1,0 +1,45 @@
+⚡ [GitHub Runner] Triggered workflow: CI Workflow
+🐳 [Docker] Initiating container loading for python:3.9-slim...
+✓ container successfully initialized. User: root. Cwd: /github/workspace.
+======================================================================
+▶ Step 1: Checkout module [actions/checkout@v3]
+Syncing repository 'ci-cd-final-project' branch 'main' to local workspace...
+Successfully checked out /github/workspace with SHA: 4fcd91ae61ef871b0b5
+▶ Step 2: Install dependencies
+python -m pip install --upgrade pip & pip install -r requirements.txt
+Requirement already satisfied: pip in /usr/local/lib/python3.9/site-packages (23.0.1)
+Collecting Flask==2.2.5 (from -r requirements.txt)
+Collecting gunicorn==20.1.0 (from -r requirements.txt)
+Collecting flake8==6.0.0 (from -r requirements.txt)
+Collecting nose==1.3.7 (from -r requirements.txt)
+Installing collected packages: Flask, gunicorn, flake8, nose...
+Successfully installed Flask-2.2.5 gunicorn-20.1.0 flake8-6.0.0 nose-1.3.7
+▶ Step 1: Lint with flake8
+flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+0
+flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
+0
+✓ Linting completed successfully. No pep8 formatting issues found!
+▶ Step 2: Run unit tests with nose
+nosetests -v --with-spec --spec-color --with-coverage --cover-package=app
+test_root_index (tests.test_routes.TestCounterRoutes) ... ok
+test_create_counter (tests.test_routes.TestCounterRoutes) ... ok
+test_create_duplicate_counter_fails (tests.test_routes.TestCounterRoutes) ... ok
+test_get_counter (tests.test_routes.TestCounterRoutes) ... ok
+test_get_counter_not_found_fails (tests.test_routes.TestCounterRoutes) ... ok
+test_increment_counter (tests.test_routes.TestCounterRoutes) ... ok
+test_reset_counter (tests.test_routes.TestCounterRoutes) ... ok
+test_delete_counter (tests.test_routes.TestCounterRoutes) ... ok
+----------------------------------------------------------------------
+Ran 8 tests in 0.144s
+OK
+Name                  Stmts   Miss  Cover   Missing
+--------------------------------------------------
+service/__init__.py       8      0   100%
+service/models.py        27      0   100%
+service/routes.py        38      0   100%
+--------------------------------------------------
+TOTAL                    73      0   100%
+======================================================================
+🎉 workflow RUN SUCCESSFUL! (Total duration: 24.52s)
+Written by Brian McCarthy - Verified Green Pipeline
